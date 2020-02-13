@@ -27,22 +27,25 @@
                                 </ul>
                         </div>
                 </section>
-                <section class="section">
+                <section class="section first">
                         <p> 
                                 I am interested in the opportunity to change the direction of professional activity, and I
                                 would like to get a job as a junior front-end developer.
-                                 To gain knowledge, I graduated from six-month offline continuing education courses
+                                To gain knowledge, I graduated from six-month offline continuing education courses
                                 at Lobachevsky University (Nizhny Novgorod), specializing in web development.
                                 The training involved HTML, CSS, PHP, JS. In addition, I attended offline courses
                                 on React from the Nizhny Novgorod IT-company Lad. I'm learning JS and ReactNativ myself. 
                         </p>
                         <p>
-                                My professional competencies include a lot of Fin-tech experience: 
-
-                                - building an architecture for organizing electronic payments, interacting with banks. 
-                                - I know the internal processes of Russian credit organizations, the principles of operation of international payment systems and the instant payment system of the Central Bank of Russia (SBP). 
-                                - I am familiar with the relevant legislation governing banking and accepting payments, as well as with the regulatory framework of the Bank Of Russia.
-                                - In addition, I devoted a lot of time to building relationships with banks and recipients of funds.
+                                My professional competencies include a lot of fintech experience: 
+                                <ul>
+                                        <li>building an architecture for organizing electronic payments, interacting with banks.</li>
+                                        <li>I know the internal processes of Russian credit organizations, the principles of operation
+                                                of international payment systems and the instant payment system of the Central Bank of Russia (SBP). </li>
+                                        <li>I am familiar with the relevant legislation governing banking and accepting payments, as well as
+                                                with the regulatory framework of the Bank Of Russia.</li>
+                                        <li>In addition, I devoted a lot of time to building relationships with banks and recipients of funds.</li>
+                                </ul>
                         </p>
                         <p>
                                 Among my personal qualities, I can note the ability to compromise in business negotiations, maintain calm in stressful working situations, quickly understand complex issues, and lead a team.
@@ -51,101 +54,102 @@
                 </section>
         
                 <section class="section">
-                        <p>4. Skills:</p>
+                        <p><b>Skills:</b></p>
                         <ul>
-                                <li>JS at a basic level, using ES6. </li>
+                                <li>basics of JS, using ES6. </li>
                                 <li>know and use HTML5 and CSS3 sufficiently.</li>
                                 <li>basics of PHP and work with the database (SQL).</li>
                                 <li>basics of React, ReactNative.</li>
                         </ul>
                 </section>
                 <section class="section">
-                        <p>5. Sample code for an example of a component for a mobile application (ReactNative): </p>
+                        <p><b>Sample code for an example of a component for a mobile application (ReactNative):</b></p>
                         <div class="code">
                                 <code>
                                         <pre>
-        import React , {useState} from 'react';
-        import {ScrollView, ImageBackground,  StyleSheet, TouchableOpacity} from 'react-native';
-        import NoteBox from '../noteBox/index';
-        import THEME from '../../values/theme';
-        import RoundButton from '../roundButton';
-        import screenNames from '../../navigation/screenNames';
-        import { connect } from 'react-redux';
-        import actions from '../../actions/actions';
+                                                import React , {useState} from 'react';
+                                                import {ScrollView, ImageBackground,  StyleSheet, TouchableOpacity} from 'react-native';
+                                                import NoteBox from '../noteBox/index';
+                                                import THEME from '../../values/theme';
+                                                import RoundButton from '../roundButton';
+                                                import screenNames from '../../navigation/screenNames';
+                                                import { connect } from 'react-redux';
+                                                import actions from '../../actions/actions';
 
-        const GeneralScreen =  (props) => {
-            // hooks
-            const [editIndex, setEditIndex] = useState(false);
-            const setEdit = (index) => {setEditIndex(index)};
-            const unsetEdit = () => {setEditIndex(false)};
+                                                const GeneralScreen =  (props) => {
+                                                // hooks
+                                                const [editIndex, setEditIndex] = useState(false);
+                                                const setEdit = (index) => {setEditIndex(index)};
+                                                const unsetEdit = () => {setEditIndex(false)};
 
-            //methods
-            const goToEditor = ()=> {props.navigation.push(screenNames.editor)}
-            const renderNotes = () => {
-                return props.data.notes.map( (elem, index) => {
-                    return (
-                        &lt;TouchableOpacity 
-                            key = {index} 
-                            onLongPress = {()=> {setEdit(index)}} 
-                            onPress = {unsetEdit}
-                            activeOpacity = {1}
-                        />
-                            &lt;NoteBox 
-                                header = {elem.header} 
-                                content = {elem.content}
-                                editMode = {index === editIndex}
-                            />
-                        &lt;/TouchableOpacity>
-                    );
-                });
-        }
-        // render
-        return (
-            &lt;ImageBackground 
-                style = {styles.wrapper}
-                source={THEME.generalScreen.background}
-                resizeMode={'contain'}
-            />
-            &lt;ScrollView>
-                {renderNotes()}
-            &lt;/ScrollView>
-            &lt;TouchableOpacity 
-                 activeOpacity={0.5}
-                 style = {styles.activeButton}
-                 onPress={goToEditor}>
-                 &lt;RoundButton img={THEME.actionButton.img}/>
-                {
-                    editIndex !== false && (
-                        &lt;RoundButton img={THEME.actionButton.img} />
-                    )
-                }
-            &lt;/TouchableOpacity>
-        &lt;/ImageBackground>)
-        }
+                                                //methods
+                                                const goToEditor = ()=> {props.navigation.push(screenNames.editor)}
+                                                const renderNotes = () => {
+                                                        return props.data.notes.map( (elem, index) => {
+                                                            return (
+                                                                &lt;TouchableOpacity 
+                                                                    key = {index} 
+                                                                    onLongPress = {()=> {setEdit(index)}} 
+                                                                    onPress = {unsetEdit}
+                                                                    activeOpacity = {1}
+                                                                />
+                                                                &lt;NoteBox 
+                                                                    header = {elem.header} 
+                                                                    content = {elem.content}
+                                                                    editMode = {index === editIndex}
+                                                                />
+                                                                &lt;/TouchableOpacity>
+                                                            );
+                                                        });
+                                                }
+                                                // render
+                                                return (
+                                                        &lt;ImageBackground 
+                                                            style = {styles.wrapper}
+                                                            source={THEME.generalScreen.background}
+                                                            resizeMode={'contain'}
+                                                        />
+                                                            &lt;ScrollView>
+                                                                {renderNotes()}
+                                                            &lt;/ScrollView>
+                                                            &lt;TouchableOpacity 
+                                                                activeOpacity={0.5}
+                                                                style = {styles.activeButton}
+                                                                onPress={goToEditor}>
+                                                                &lt;RoundButton img={THEME.actionButton.img}/>
+                                                                {
+                                                                    editIndex !== false && (
+                                                                        &lt;RoundButton img={THEME.actionButton.img} />
+                                                                    )
+                                                                }
+                                                            &lt;/TouchableOpacity>
+                                                        &lt;/ImageBackground>
+                                                    )
+                                                }
 
-        const styles = StyleSheet.create ({
-            wrapper: {
-                flex: 1,
-                paddingTop: THEME.generalScreen.paddingTop,
-            },
-            activeButton: {
-                position: 'absolute',
-                bottom: 30,
-                right: 30
-            }
-        })
+                                                const styles = StyleSheet.create ({
+                                                wrapper: {
+                                                    flex: 1,
+                                                    paddingTop: THEME.generalScreen.paddingTop,
+                                                },
+                                                activeButton: {
+                                                    position: 'absolute',
+                                                    bottom: 30,
+                                                    right: 30
+                                                }
+                                                })
 
-        export default connect( (store) => {
-            return {
-                data: store.data
-            }
-        }, actions)(GeneralScreen);
+                                                export default connect( (store) => {
+                                                return {
+                                                    data: store.data
+                                                }
+                                                }, actions)(GeneralScreen);
                                         </pre>
                                 </code>
                         </div>
                 </section>
                 <section class="section">
-                        <p>6. Experience:</p>
+                        <p><b>Experience:</b></p>
                         <p>
                                 My experience is based on work in regional IT companies working in the fintech industry.
                                 I did not work in direct development. My positions were related to management, collaboration
@@ -172,7 +176,7 @@
                                 </div>
                                 <div class="position">
                                         <h3>
-                                                Chief Compliance Officer, Chief Operating Officer. OPLATA.RU. Group of companies
+                                                Chief Compliance Officer, Chief Operating Officer. OPLATA.RU, Group of companies
                                         </h3>
                                         <p>
                                                 Federal network of bank payment terminals OPLATA.RU.
@@ -183,26 +187,11 @@
                         </div>
                         <div class="experience">
                                 <div class="date">
-                                        October 2006 — August 2016
+                                        March 2002 — <br> October 2006
                                 </div>
                                 <div class="position">
                                         <h3>
-                                                Chief Compliance Officer, Chief Operating Officer. OPLATA.RU. Group of companies
-                                        </h3>
-                                        <p>
-                                                Federal network of bank payment terminals OPLATA.RU.
-                                                Among partners are large regional and federal banks, the 
-                                                argest service providers for the population.
-                                        </p>
-                                </div>
-                        </div>
-                        <div class="experience">
-                                <div class="date">
-                                        Mart 2002 — <br> October 2006
-                                </div>
-                                <div class="position">
-                                        <h3>
-                                                Head of Authorization Center. Rucard-NN
+                                                Head of Authorization Center in Rucard-NN
                                         </h3>
                                         <p>
                                                 The company acted as a processing center for international
@@ -213,7 +202,7 @@
                 </section>
                 
                 <section class="section">
-                        <p>7. Education:</p>
+                        <p><b>Education:</b></p>
                         <ul>
                                 <li>Lobachevsky University (Nizhny Novgorod), specializing in web development (HTML, CSS, PHP, JS)</li>
                                 <li>Online courses Udemy: JavaScript, React, ReactNative</li>
@@ -221,12 +210,16 @@
                         </ul>
                 </section>
                 <section class="last-section">
+                        <p><b>Languages:</b></p>
                         <p>
-                                8. My English can hardly be called "Pre-intermediate".
+                                My English can hardly be called "Pre-intermediate".
                                 I can understand, write and talk on everyday topics. In foreign trips I can explain my wishes.
                                 I read with the dictionary.
                         </p>
                 </section>
+                <div class="updated">
+                        Updated: <time datetime="2020-02-13">2020-02-13</time>
+                </div>
         </div>
 </body>
 </html>
