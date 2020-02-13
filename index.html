@@ -9,7 +9,7 @@
 <body>
         <div class="wrap">
                 <header>
-                        <h1>Resume for vacancy Junior developer. Kruglov Dmitrii</h1>
+                        <h1>Resume for vacancy Junior developer.</h1>
                 </header>
                 <section class="info">
                         <div class="photo">
@@ -17,9 +17,14 @@
                         </div>
                         <div class="contact">
                                 <h2>Kruglov Dmitrii</h2>
+                                <p>28 july 1980</p>
+                                <p>Nizhny Novgorod</p>
+                                <br>
                                 <p>Contact Info:</p>
-                                <p>e-mail: krudda@yandex.ru</p>
-                                <p>phone: +7 920 254 08 80</p>
+                                <ul>
+                                        <li>e-mail: krudda@yandex.ru</li>
+                                        <li>phone: +7 920 254 08 80</li>
+                                </ul>
                         </div>
                 </section>
                 <section class="section">
@@ -56,9 +61,155 @@
                 </section>
                 <section class="section">
                         <p>5. Sample code for an example of a component for a mobile application (ReactNative): </p>
+                        <div class="code">
+                                <code>
+                                        <pre>
+        import React , {useState} from 'react';
+        import {ScrollView, ImageBackground,  StyleSheet, TouchableOpacity} from 'react-native';
+        import NoteBox from '../noteBox/index';
+        import THEME from '../../values/theme';
+        import RoundButton from '../roundButton';
+        import screenNames from '../../navigation/screenNames';
+        import { connect } from 'react-redux';
+        import actions from '../../actions/actions';
+
+        const GeneralScreen =  (props) => {
+            // hooks
+            const [editIndex, setEditIndex] = useState(false);
+            const setEdit = (index) => {setEditIndex(index)};
+            const unsetEdit = () => {setEditIndex(false)};
+
+            //methods
+            const goToEditor = ()=> {props.navigation.push(screenNames.editor)}
+            const renderNotes = () => {
+                return props.data.notes.map( (elem, index) => {
+                    return (
+                        &lt;TouchableOpacity 
+                            key = {index} 
+                            onLongPress = {()=> {setEdit(index)}} 
+                            onPress = {unsetEdit}
+                            activeOpacity = {1}
+                        />
+                            &lt;NoteBox 
+                                header = {elem.header} 
+                                content = {elem.content}
+                                editMode = {index === editIndex}
+                            />
+                        &lt;/TouchableOpacity>
+                    );
+                });
+        }
+        // render
+        return (
+            &lt;ImageBackground 
+                style = {styles.wrapper}
+                source={THEME.generalScreen.background}
+                resizeMode={'contain'}
+            />
+            &lt;ScrollView>
+                {renderNotes()}
+            &lt;/ScrollView>
+            &lt;TouchableOpacity 
+                 activeOpacity={0.5}
+                 style = {styles.activeButton}
+                 onPress={goToEditor}>
+                 &lt;RoundButton img={THEME.actionButton.img}/>
+                {
+                    editIndex !== false && (
+                        &lt;RoundButton img={THEME.actionButton.img} />
+                    )
+                }
+            &lt;/TouchableOpacity>
+        &lt;/ImageBackground>)
+        }
+
+        const styles = StyleSheet.create ({
+            wrapper: {
+                flex: 1,
+                paddingTop: THEME.generalScreen.paddingTop,
+            },
+            activeButton: {
+                position: 'absolute',
+                bottom: 30,
+                right: 30
+            }
+        })
+
+        export default connect( (store) => {
+            return {
+                data: store.data
+            }
+        }, actions)(GeneralScreen);
+                                        </pre>
+                                </code>
+                        </div>
                 </section>
                 <section class="section">
                         <p>6. Experience:</p>
+                        <p>
+                                My experience is based on work in regional IT companies working in the fintech industry.
+                                I did not work in direct development. My positions were related to management, collaboration
+                                with partners and internally with development teams.
+                        </p>
+                        <div class="experience">
+                                <div class="date">
+                                        <p>
+                                                October 2016 — February 2020
+                                        </p>
+                                </div>
+                                <div class="position">
+                                        <h3>Chief Financial Officer in Aksioma, Processing Center</h3>
+                                        <p>
+                                                A federal IT company providing cloud solutions for school catering operators and participants
+                                                in the education system. Among partners - more than 1500 educational institutions, education
+                                                departments, credit organizations.
+                                        </p>
+                                </div>
+                        </div>
+                        <div class="experience">
+                                <div class="date">
+                                        October 2006 — August 2016
+                                </div>
+                                <div class="position">
+                                        <h3>
+                                                Chief Compliance Officer, Chief Operating Officer. OPLATA.RU. Group of companies
+                                        </h3>
+                                        <p>
+                                                Federal network of bank payment terminals OPLATA.RU.
+                                                Among partners are large regional and federal banks, the 
+                                                argest service providers for the population.
+                                        </p>
+                                </div>
+                        </div>
+                        <div class="experience">
+                                <div class="date">
+                                        October 2006 — August 2016
+                                </div>
+                                <div class="position">
+                                        <h3>
+                                                Chief Compliance Officer, Chief Operating Officer. OPLATA.RU. Group of companies
+                                        </h3>
+                                        <p>
+                                                Federal network of bank payment terminals OPLATA.RU.
+                                                Among partners are large regional and federal banks, the 
+                                                argest service providers for the population.
+                                        </p>
+                                </div>
+                        </div>
+                        <div class="experience">
+                                <div class="date">
+                                        Mart 2002 — <br> October 2006
+                                </div>
+                                <div class="position">
+                                        <h3>
+                                                Head of Authorization Center. Rucard-NN
+                                        </h3>
+                                        <p>
+                                                The company acted as a processing center for international
+                                                payment systems Visa and MasterCard.
+                                        </p>
+                                </div>
+                        </div>
                 </section>
                 
                 <section class="section">

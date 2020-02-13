@@ -2,15 +2,31 @@
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
 }
+h1 {
+        font-size: 34px;
+}
+h2 {
+        padding-top: 10px;
+        padding-bottom: 10px;
+}
 p { 
-        text-indent: 1.5em; /* Отступ первой строки */
-        text-align: justify; /* Выравнивание по ширине */
+        text-indent: 1.5em; 
+        text-align: justify; 
 }
 
+li {
+        text-indent: 1.5em; 
+}
 .wrap {
         margin: 0 auto;
         width: 1024px;
-        background-color: ivory;
+        /* background-color: ivory; */
+        font-size: 1.2em;
+}
+header {
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
 }
 .info {
         display: flex;
@@ -20,6 +36,7 @@ p {
         border-bottom: lightgray 1px solid;
 }
 
+
 .photo {
         width: 30%;
 }
@@ -27,8 +44,13 @@ p {
         height: 200px;
 }
 .contact {
-       
         width: 50%;
+        text-align: justify;
+}
+
+.contact p, .contact li, .date p, .position p{
+        text-indent: 0%;
+        text-align: left; 
 }
 
 .section {
@@ -39,4 +61,23 @@ p {
 .last-section {
         margin: 10px;
         padding: 10px;
+        margin-bottom: 60px;
+}
+.code {
+        margin: 10px;
+        padding: 10px;
+        background-color: ivory;
+}
+.experience {
+        display: flex;
+        padding-top: 10px;
+        padding-bottom: 5px;
+}
+.date {
+        width: 20%;
+        margin-left: 1.5em;
+        color: gray;
+}
+.position {
+        width: 80%;
 }
